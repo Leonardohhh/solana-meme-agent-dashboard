@@ -12,3 +12,16 @@ export function addAccount(username: string): Promise<{
     body: JSON.stringify({ username }),
   }).then((res) => res.json());
 }
+
+export function deleteAccount(username: string): Promise<{
+  data: object;
+  error: string | null;
+}> {
+  return fetch(new URL("users/delete", base_url), {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username }),
+  }).then((res) => res.json());
+}
